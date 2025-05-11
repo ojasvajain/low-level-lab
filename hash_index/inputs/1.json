@@ -1,0 +1,14 @@
+[
+  {
+    "choice": "create_table",
+    "input": {
+      "table_name": "customer"
+    }
+  },
+  {
+    "choice": "create_table",
+    "input": {
+      "table_name": "payment"
+    }
+  }
+]
