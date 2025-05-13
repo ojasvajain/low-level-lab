@@ -2,13 +2,24 @@
   {
     "choice": "create_table",
     "input": {
-      "table_name": "customer"
+      "table_name": "customer",
+      "columns": {
+        "id": "string",
+        "name": "string",
+        "email": "string"
+      }
     }
   },
   {
     "choice": "create_table",
     "input": {
-      "table_name": "payment"
+      "table_name": "payment",
+      "columns": {
+        "id": "string",
+        "amount": "int",
+        "customer_id": "string",
+        "order_id": "string"
+      }
     }
   }
 ]

@@ -9,6 +9,10 @@ choices = {
         'description': 'Create table',
         'fn': db.create_table
     }
+    'create_index': {
+        'description': 'Create Index',
+        'fn':
+    }
 }
 
 
@@ -39,7 +43,7 @@ def process_input_file(choice):
         with open(path, 'r') as file:
             payload = json.loads(file.read())
             if not isinstance(payload, list):
-                print('Input should be a JSON list')
+                print('Error - Input should be a JSON list')
                 return
             for obj in payload:
                 success, error = validate_choice_object(obj)
