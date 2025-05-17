@@ -18,6 +18,7 @@ Menu
 5. Perform compaction - should run in parallel. once complete user should get notified
 should show statistics about size reduced, time taken
 6. Rebuild hash table
+7. Add index on column
 
 Make it possible to plug your own implementation of hash table in future
 
@@ -26,3 +27,5 @@ Entities
 3. Segment (read max size from config)
 2. Compaction Strategy
 3. Menu
+
+Simulate multiple reader and writer threads

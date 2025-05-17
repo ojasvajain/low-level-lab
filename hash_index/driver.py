@@ -9,12 +9,15 @@ choices = {
         'description': 'Create table',
         'fn': db.create_table
     }
-    'create_index': {
-        'description': 'Create Index',
-        'fn':
-    }
+    # 'create_index': {
+    #     'description': 'Create Index',
+    #     'fn':
+    # }
 }
 
+# TODO
+# 1. Ensure we use byte offset in segments not row index
+# 2. simplify iteration over records if possible
 
 def show_main_menu():
     while True:
@@ -61,4 +64,17 @@ def process_input_file(choice):
 
 
 if __name__ == '__main__':
-    show_main_menu()
+   #show_main_menu()
+    table = db.create_table('customers', ['id', 'name'])
+    table.insert({
+        'id': 1,
+        'name': 'ojasva'
+    })
+    table.insert({
+        'id': 2,
+        'name': 'ojasva'
+    })
+    table.insert({
+            'id': 3,
+            'name': 'ojasva'
+        })

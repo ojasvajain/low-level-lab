@@ -1,1 +1,3 @@
 .idea/
+segments/
+!segments/.gitkeep
