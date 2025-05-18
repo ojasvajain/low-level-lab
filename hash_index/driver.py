@@ -75,6 +75,25 @@ if __name__ == '__main__':
         'name': 'ojasva'
     })
     table.insert({
-            'id': 3,
+            'id': 12,
             'name': 'ojasva'
-        })
+    })
+    table.insert({
+        'id': 12,
+        'name': 'oasdasdsadasdsadsadasds'
+    })
+    table.insert({
+        'id': 112,
+        'name': 'osdasdsadasdsadsadasds'
+    })
+
+    table.create_hash_index('id')
+    table.create_hash_index('name')
+
+    print(table.get('id', 112))
+    print(table.get('name', 'oasdasdsadasdsadsadasds'))
+    table.delete('id', 12)
+    table.print_hash_table('id')
+    table.print_hash_table('name')
+
+
