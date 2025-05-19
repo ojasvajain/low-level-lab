@@ -80,20 +80,55 @@ if __name__ == '__main__':
     })
     table.insert({
         'id': 12,
-        'name': 'oasdasdsadasdsadsadasds'
+        'name': 'ojas'
     })
     table.insert({
         'id': 112,
-        'name': 'osdasdsadasdsadsadasds'
+        'name': 'ojasjain'
     })
 
     table.create_hash_index('id')
     table.create_hash_index('name')
 
-    print(table.get('id', 112))
-    print(table.get('name', 'oasdasdsadasdsadsadasds'))
+    # print(table.get('id', 112))
+    # print(table.get('name', 'oasdasdsadasdsadsadasds'))
     table.delete('id', 12)
-    table.print_hash_table('id')
-    table.print_hash_table('name')
+    # table.print_hash_table('id')
+    # table.print_hash_table('name')
+
+    table.insert({
+        'id': 431,
+        'name': 'John'
+    })
+    table.insert({
+        'id': 786,
+        'name': 'M'
+    })
+    table.insert({
+    'id': 100,
+    'name': 'J'
+    })
+
+    table.update('id', 100, 'name', 'Jain')
+    table.update('name', 'John', 'name', 'Von')
+    print(table.get('id', 1))
+    print(table.get('id', 2))
+    print(table.get('id', 12)) # error expected
+    print(table.get('id', 112))
+    print(table.get('id', 431))
+    print(table.get('id', 786))
+    print(table.get('id', 100))
+
+    print(table.get('name', 'ojasva'))
+    print(table.get('name', 'ojas')) # error expected
+    print(table.get('name', 'ojasjain'))
+    print(table.get('name', 'John')) # error expected
+    print(table.get('name', 'M'))
+    print(table.get('name', 'J')) # error expected
+    print(table.get('name', 'Jain'))
+    print(table.get('name', 'Von'))
+
+
+
 
 

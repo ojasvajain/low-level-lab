@@ -39,11 +39,37 @@ class Table:
             print(f'Updating Hash Index on {column}')
             hash_index = self.hash_indexes[column]
             key = record[column]
-            hash_index[key].append((_id, offset))
+            if key not in hash_index:
+                hash_index[key] = [(_id, offset)]
+            else:
+                hash_index[key].append((_id, offset))
 
-    def update(self):
-        return
+    # UPDATE <table_name> SET = <updated_value> WHERE <input_key> = <input_value>
+    def update(self, input_key, input_value, key_to_update, updated_value):
+        records = self.get(input_key, input_value)
 
+        # get (s_id, offsets) of records found
+        positions = self.hash_indexes[input_key][input_value].copy()
+        # write updated records
+        # update hash indexes
+        for i in range(len(records)):
+            record = records[i]
+            updated_record = record.copy()
+            updated_record[key_to_update] = updated_value
+            _id, offset = self.segments.write_to_disk(updated_record)
+            print(f'Update record written for record {i}')
+
+            # only one index needs to be modified
+            hash_index = self.hash_indexes[key_to_update]
+            value = record[key_to_update]
+            hash_index[value].remove(positions[i])
+            if updated_value not in hash_index:
+                hash_index[updated_value] = [(_id, offset)]
+            else:
+                hash_index[updated_value].append((_id, offset))
+            print(f'Indexes updated for record {i}')
+
+    # DELETE FROM <table_name> WHERE <input_key> = <input_value>
     def delete(self, input_key, input_value):
         # get existing records
         records = self.get(input_key, input_value)
@@ -63,6 +89,7 @@ class Table:
                 hash_index[value].remove(positions[i])
             print(f'Indexes updated for record {i}')
 
+    # SELECT * FROM <table_name> WHERE <key> = <value>
     def get(self, key, value):
         if key not in self.hash_indexes:
             raise Exception(f'Index not found on {key}')
