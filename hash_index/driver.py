@@ -16,8 +16,12 @@ choices = {
 }
 
 # TODO
-# 1. Ensure we use byte offset in segments not row index
-# 2. simplify iteration over records if possible
+# 1. Improve Menu - Think about a general design
+# 2. Pythonic way to append or create in hash index
+# 3. Pass by reference and using copy() methods - Is there a better way?
+# 4. Check thread safety of operations
+# 5. general refactoring (for eg. creating constants)
+# 6. Implement compaction and merging
 
 def show_main_menu():
     while True:
