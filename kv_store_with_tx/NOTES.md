@@ -21,6 +21,7 @@ Example 1:
 - read(“key1”) – returns “val2”
 - delete(“key1”) – returns “Delete Success”
 - read(“key1”) – returns “No key associated”
+
 Part 2
 
 Enable transactions for your data store. A transaction starts with begin() and operations like READ, CREATE, UPDATE, DELETE can take place during this time. After these operation, the transaction is ended by either a commit() that commits everything permanently in the data store or rollback() that reverts everything that was performed during the transaction window. Notice that I highlighted the key-word everything.
@@ -79,6 +80,8 @@ Example 2: Disregard previous state of the Data Store
 - read(“key2”) – returns val2
 - read(“key3”) – returns val3
 - read(“key5”) – No Key Associated
+
+
 Part 3
 
 Make the transactions limited. In Part 2, commit() commits everything while rollback() rolls back everything. This part will ensure that you can only –
@@ -139,3 +142,7 @@ Example 2:
 - read(“key2”) – returns val7
 - read(“key3”) – returns val8
 - read(“key5”) - returns val7
+
+Part 4
+
+Support nested transactions

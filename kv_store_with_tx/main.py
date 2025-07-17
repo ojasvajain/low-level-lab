@@ -1,4 +1,5 @@
 from kv_store import KVStore
+from kv_store_with_nested_tx import KVStore as KVStoreWithNestedTx
 
 
 def driver1():
@@ -115,8 +116,23 @@ def driver3():
     print(kv_store.read('k5'))
 
 
+def driver4():
+    kv_store = KVStoreWithNestedTx()
+    print(kv_store.create('k1', 'v1'))
+    print(kv_store.begin())
+    print(kv_store.update('k1', 'v11'))
+    print(kv_store.begin())
+    print(kv_store.update('k1', 'v111'))
+    print(kv_store.rollback())
+    print(kv_store.commit())
+    print(kv_store.read('k1'))
+
+    # kv_store.rollback()
+    # kv_store.commit()
+
 
 if __name__ == '__main__':
     #driver1()
     #driver2()
-    driver3()
+    #driver3()
+    driver4()
